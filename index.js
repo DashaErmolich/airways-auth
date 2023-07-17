@@ -1,6 +1,7 @@
 const jsonServer = require('json-server')
 const cors = require('cors')
 const path = require('path')
+const auth = require('json-server-auth')
 
 const server = jsonServer.create()
 const router = jsonServer.router(path.join(__dirname, 'db.json'))
@@ -10,6 +11,7 @@ server.use(cors())
 server.use(jsonServer.bodyParser)
 server.use(middlewares)
 server.use(router)
+server.use(auth)
 
 const PORT = 8000
 
